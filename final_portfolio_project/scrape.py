@@ -1,6 +1,7 @@
 #scraping genre data from the wiki on music genre types
 from bs4 import BeautifulSoup
 import requests
+from tqdm import tqdm
 
 #I will scrape genre info from every link on the wiki music styles page
 def get_genres():
@@ -47,11 +48,22 @@ def get_genres():
     return genres
 
 #begin work on scrapping information about each genre
-def get_genre_info(url = None):
-    url = "https://en.wikipedia.org/wiki/Electropop"
+def get_genre_info(url):
     html = requests.get(url).text
     soup = BeautifulSoup(html, 'html5lib')
 
-    print(soup)
+    #looking to get the paragraph description from the website
+    div = soup.find('div', class_ = 'mw-parser-output')
+    description = div.p.get_text()
 
-get_genre_info()
+    return description
+
+genres = get_genres()
+for genre in tqdm(genres):
+    try:
+        genres[genre]['description'] = get_genre_info(("https://en.wikipedia.org" + genres[genre]['link']))
+    except:
+        print(genre)
+
+print(genres)
+# print(get_genre_info())
