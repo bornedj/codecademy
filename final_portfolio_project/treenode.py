@@ -1,6 +1,7 @@
 class TreeNode:
-  def __init__(self, value):
-    self.value = value # data
+  def __init__(self, name, info):
+    self.name = name # data
+    self.info = info
     self.children = [] # references to other nodes
 
   def add_child(self, child_node):
