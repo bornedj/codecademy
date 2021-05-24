@@ -2,6 +2,7 @@
 from bs4 import BeautifulSoup
 import requests
 from tqdm import tqdm
+import pickle
 
 #I will scrape genre info from every link on the wiki music styles page
 def get_genres():
@@ -65,5 +66,7 @@ for genre in tqdm(genres):
     except:
         print(genre)
 
-print(genres)
-# print(get_genre_info())
+#let's save the scraped data into a pickled file so we don't have to constantly scrape data
+f = open('genres_dict.pkl', 'wb')
+pickle.dump(genres, f)
+f.close()
