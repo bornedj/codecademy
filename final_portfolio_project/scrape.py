@@ -1,4 +1,5 @@
 #scraping genre data from the wiki on music genre types
+from requests.api import request
 from bs4 import BeautifulSoup
 import requests
 from tqdm import tqdm
@@ -59,14 +60,38 @@ def get_genre_info(url):
 
     return description
 
-genres = get_genres()
-for genre in tqdm(genres):
-    try:
-        genres[genre]['description'] = get_genre_info(("https://en.wikipedia.org" + genres[genre]['link']))
-    except:
-        print(genre)
+# genres = get_genres()
+# for genre in tqdm(genres):
+#     try:
+#         genres[genre]['description'] = get_genre_info(("https://en.wikipedia.org" + genres[genre]['link']))
+#     except:
+#         print(genre)
 
 #let's save the scraped data into a pickled file so we don't have to constantly scrape data
-f = open('genres_dict.pkl', 'wb')
-pickle.dump(genres, f)
-f.close()
+# f = open('genres_dict.pkl', 'wb')
+# pickle.dump(genres, f)
+# f.close()
+
+#getting artist information
+with open('genres_dict.pkl', 'rb') as f:
+    genres = pickle.load(f)
+
+#we need to loop through all the links again to find the artists that are mentioned in the genre and their websites
+# def get_artist(url):
+#     html = requests.get(url).text
+#     soup = BeautifulSoup(html, 'html5lib')
+
+#     divs = soup.find_all('div', id = 'mw-pages')
+#     return divs
+
+
+def get_artist(url, genre):
+    html = requests.get(url).text
+    soup = BeautifulSoup(html, 'html5lib')
+
+
+
+
+test_url = "https://en.wikipedia.org/wiki/Alternative_R%26B"
+
+print(get_artist(test_url, 'Alternative R&B'))
