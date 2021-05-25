@@ -85,9 +85,39 @@ def get_artist():
 
     divs = soup.find_all('div', class_ = 'mw-category-group')
     uls = [div.ul for div in divs]
-    links = [ul.li.a.get('href') for ul in uls]
+    lis = [ul.find_all('li') for ul in uls]
+
+    #flattening the list
+    lis = [item for sublist in lis for item in sublist]
     
+    links = [li.a.get('href') for li in lis]
+    titles = [li.a.get('title') for li in lis]
+    
+    list_of_artist_by_genre = {title: {'link': link} for title, link in zip(titles, links)}#dictionary contains the list of as key and then the link
+    # html = requests.get(link[0]).text
+    # soup = BeautifulSoup(html, 'html5lib')
+
+    #will loop through all eventually will test for now
+    # for link in links:
+    #     html = requests.get(link).text
+        
     return links
+
+
+def get_artist_links(url):
+    #setup bs4
+    html = requests.get(url).text
+    soup = BeautifulSoup(html, 'html5lib')
+
+    #get list of artist links
+    divs = soup.find_all('div', class_ ='div-col')#this ensures its just the list of genres
+    uls = [div.ul for div in divs]#getting all the uls
+    lis = [ul.find_all('li') for ul in uls]
+
+    #flattening the list
+    lis = [item for sublist in lis for item in sublist]
+
+
 
 
 # def get_artist(url, genre):
@@ -101,6 +131,7 @@ def get_artist():
 
 
 
-test_url = "https://en.wikipedia.org/wiki/Alternative_R%26B"
+test_url = "https://en.wikipedia.org/wiki/List_of_ragtime_musicians"
 
 print(get_artist())
+# print(get_artist_links(test_url))
