@@ -77,6 +77,8 @@ def get_genre_info(url):
 with open('genres_dict.pkl', 'rb') as f:
     genres = pickle.load(f)
 
+f.close()
+
 #we need to loop through all the links again to find the artists that are mentioned in the genre and their websites
 def get_artist():
     url = "https://en.wikipedia.org/wiki/Category:Lists_of_musicians_by_genre"
@@ -89,19 +91,13 @@ def get_artist():
 
     #flattening the list
     lis = [item for sublist in lis for item in sublist]
-    
+
     links = [li.a.get('href') for li in lis]
     titles = [li.a.get('title') for li in lis]
     
-    list_of_artist_by_genre = {title: {'link': link} for title, link in zip(titles, links)}#dictionary contains the list of as key and then the link
-    # html = requests.get(link[0]).text
-    # soup = BeautifulSoup(html, 'html5lib')
-
-    #will loop through all eventually will test for now
-    # for link in links:
-    #     html = requests.get(link).text
+    list_of_artist_by_genre = {title: {'link_list': link} for title, link in zip(titles, links)}#dictionary contains the list of as key and then the link
         
-    return links
+    return list_of_artist_by_genre
 
 
 def get_artist_links(url):
@@ -110,28 +106,51 @@ def get_artist_links(url):
     soup = BeautifulSoup(html, 'html5lib')
 
     #get list of artist links
-    divs = soup.find_all('div', class_ ='div-col')#this ensures its just the list of genres
-    uls = [div.ul for div in divs]#getting all the uls
-    lis = [ul.find_all('li') for ul in uls]
+    try:
+        divs = soup.find_all('div', class_ ='div-col')#this ensures its just the list of genres
+        uls = [div.ul for div in divs]#getting all the uls
+        lis = [ul.find_all('li') for ul in uls]
 
-    #flattening the list
-    lis = [item for sublist in lis for item in sublist]
+        #flattening the list
+        lis = [item for sublist in lis for item in sublist]
+    except:
+        return None
+
+    links = []
+    artists =[]
+    for li in lis:    
+        try:
+            link = li.a.get('href')
+            links.append(link)
+
+            title = li.a.get('title')
+            artists.append(title)
+        except:
+            links.append(None)
+            artists.append(None)
+
+    artists_and_links = {artist: link for artist, link in zip(artists, links)}
+    return artists_and_links
 
 
+# link_dict = get_artist()
+# for genre in tqdm(link_dict):
+#     link_dict[genre]["artist_dict"] = get_artist_links("https://en.wikipedia.org" + link_dict[genre]['link_list'])
+
+#writting the file so that I don't need to scrape again
+# f = open('artists_by_genre.pkl', 'wb')
+# pickle.dump(lists_of_artists, f)
+# f.close()
+
+#reading back in the dictionary with tons of info on artists
+with open('artists_by_genre.pkl', 'rb') as f:
+    lists_of_artists = pickle.load(f)
+f.close()
 
 
-# def get_artist(url, genre):
-#     html = requests.get(url).text
-#     soup = BeautifulSoup(html, 'html5lib')
-
-#     string = "List of {0} artists".format(genre)
-#     link = soup.find('a', title = string).get('href')
-
-#     return link
-
-
-
-test_url = "https://en.wikipedia.org/wiki/List_of_ragtime_musicians"
-
-print(get_artist())
-# print(get_artist_links(test_url))
+#retrieving descriptions and albums from each artist
+copy = lists_of_artists.copy()
+for list in copy:
+    if lists_of_artists[list]['artist_dict'] == None:
+        lists_of_artists.pop(list)
+        
