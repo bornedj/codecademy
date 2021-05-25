@@ -1,4 +1,5 @@
 #scraping genre data from the wiki on music genre types
+from os import link
 from requests.api import request
 from bs4 import BeautifulSoup
 import requests
@@ -77,21 +78,29 @@ with open('genres_dict.pkl', 'rb') as f:
     genres = pickle.load(f)
 
 #we need to loop through all the links again to find the artists that are mentioned in the genre and their websites
-# def get_artist(url):
-#     html = requests.get(url).text
-#     soup = BeautifulSoup(html, 'html5lib')
-
-#     divs = soup.find_all('div', id = 'mw-pages')
-#     return divs
-
-
-def get_artist(url, genre):
+def get_artist():
+    url = "https://en.wikipedia.org/wiki/Category:Lists_of_musicians_by_genre"
     html = requests.get(url).text
     soup = BeautifulSoup(html, 'html5lib')
 
+    divs = soup.find_all('div', class_ = 'mw-category-group')
+    uls = [div.ul for div in divs]
+    links = [ul.li.a.get('href') for ul in uls]
+    
+    return links
+
+
+# def get_artist(url, genre):
+#     html = requests.get(url).text
+#     soup = BeautifulSoup(html, 'html5lib')
+
+#     string = "List of {0} artists".format(genre)
+#     link = soup.find('a', title = string).get('href')
+
+#     return link
 
 
 
 test_url = "https://en.wikipedia.org/wiki/Alternative_R%26B"
 
-print(get_artist(test_url, 'Alternative R&B'))
+print(get_artist())
