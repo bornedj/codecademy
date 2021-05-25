@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import requests
 from tqdm import tqdm
 import pickle
+import re
 
 #I will scrape genre info from every link on the wiki music styles page
 def get_genres():
@@ -155,10 +156,27 @@ f.close()
 
 
 def get_artist_info(url):
-    pass
+    #setup the soup
+    # url = "https://en.wikipedia.org/wiki/T-Pain"
+    html = requests.get(url).text
+    soup = BeautifulSoup(html, 'html5lib')
+
+    # all_i = soup.find_all('i')
+    # all_a = [i.a for i in all_i]
+
+    a_tags = soup.find_all('a', title = re.compile('album'))
+    albums = [tag.get('title') for tag in a_tags]
+    return albums
 
 #looping through the dictionary to create the artist dictionary
-for list in lists_of_artists:
+artists_info = {}
+for list in tqdm(lists_of_artists):
     for key in lists_of_artists[list]['artist_dict']:
-        url = "https://en.wikipedia.org" + lists_of_artists[list]['artist_dict'][key]
+        if lists_of_artists[list]['artist_dict'][key]:
+            url = "https://en.wikipedia.org" + lists_of_artists[list]['artist_dict'][key]
+            artists_info[key] = get_artist_info(url)
 
+print(artists_info)
+# print(get_artist_info(''))
+
+#save the artists_info data
