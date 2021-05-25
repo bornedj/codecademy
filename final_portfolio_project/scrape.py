@@ -164,6 +164,7 @@ def get_artist_info(url):
     # all_i = soup.find_all('i')
     # all_a = [i.a for i in all_i]
 
+    
     a_tags = soup.find_all('a', title = re.compile('album'))
     albums = [tag.get('title') for tag in a_tags]
     return albums
