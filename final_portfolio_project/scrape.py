@@ -147,10 +147,18 @@ with open('artists_by_genre.pkl', 'rb') as f:
     lists_of_artists = pickle.load(f)
 f.close()
 
+#cleaning the dictionary
+# copy = lists_of_artists.copy()
+# for list in copy:
+#     if lists_of_artists[list]['artist_dict'] == None:
+#         lists_of_artists.pop(list)
 
-#retrieving descriptions and albums from each artist
-copy = lists_of_artists.copy()
-for list in copy:
-    if lists_of_artists[list]['artist_dict'] == None:
-        lists_of_artists.pop(list)
-        
+
+def get_artist_info(url):
+    pass
+
+#looping through the dictionary to create the artist dictionary
+for list in lists_of_artists:
+    for key in lists_of_artists[list]['artist_dict']:
+        url = "https://en.wikipedia.org" + lists_of_artists[list]['artist_dict'][key]
+
