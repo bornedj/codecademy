@@ -184,7 +184,7 @@ for list in tqdm(lists_of_artists):
 print(artists_info)
 
 #save the artists_info data
-f = open('artists_info.pkl', 'rb')
+f = open('artists_info.pkl', 'wb')
 pickle.dump(artists_info, f)
 f.close()
 
