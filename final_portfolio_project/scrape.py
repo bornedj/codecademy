@@ -1,11 +1,10 @@
 #scraping genre data from the wiki on music genre types
-from os import link
-from requests.api import request
 from bs4 import BeautifulSoup
 import requests
 from tqdm import tqdm
 import pickle
 import re
+from treenode import TreeNode
 
 #I will scrape genre info from every link on the wiki music styles page
 def get_genres():
@@ -75,10 +74,9 @@ def get_genre_info(url):
 # f.close()
 
 #getting artist information
-with open('genres_dict.pkl', 'rb') as f:
-    genres = pickle.load(f)
-
-f.close()
+# with open('genres_dict.pkl', 'rb') as f:
+#     genres = pickle.load(f)
+# f.close()
 
 #we need to loop through all the links again to find the artists that are mentioned in the genre and their websites
 def get_artist():
@@ -144,9 +142,9 @@ def get_artist_links(url):
 # f.close()
 
 #reading back in the dictionary with tons of info on artists
-with open('artists_by_genre.pkl', 'rb') as f:
-    lists_of_artists = pickle.load(f)
-f.close()
+# with open('artists_by_genre.pkl', 'rb') as f:
+#     lists_of_artists = pickle.load(f)
+# f.close()
 
 #cleaning the dictionary
 # copy = lists_of_artists.copy()
@@ -170,6 +168,7 @@ def get_artist_info(url):
     return albums
 
 #looping through the dictionary to create the artist dictionary
+"""
 artists_info = {}
 for list in tqdm(lists_of_artists):
     for key in tqdm(lists_of_artists[list]['artist_dict']):
@@ -180,11 +179,80 @@ for list in tqdm(lists_of_artists):
                 artists_info[key] = get_artist_info(url)
             except:
                 artists_info[key] = "error"
-
-print(artists_info)
+"""
+# print(artists_info)
 
 #save the artists_info data
-f = open('artists_info.pkl', 'wb')
-pickle.dump(artists_info, f)
+# f = open('artists_info.pkl', 'wb')
+# pickle.dump(artists_info, f)
+# f.close()
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#cleaning out the (album) from each alubm in an artists list
+# for artist in artist_info:
+#   if artist_info[artist]:#check if the artist has a list of albums
+#     #if they do use regex to replace values
+#     for i in range(len(artist_info[artist])):
+#       corrected_album = artist_info[artist][i]
+#       corrected_album = corrected_album[:corrected_album.find('(') - 1]
+#       artist_info[artist][i] = corrected_album
+
+
+#re-writting the file now that it's corrected
+# f = open('artists_info.pkl', 'wb')
+# pickle.dump(artist_info, f)
+# f.close()
+
+# print(artist_info)
+
+
+# set up a function to iterate through the list of all the artists by genre 
+# and check if they have artists in them to be added as children.
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+#from the recommender script, reads in pickled objects and creates the dictionaries for genres and artists nodes
+
+with open('genres_dict.pkl', 'rb') as f:
+    genres = pickle.load(f)
 f.close()
 
+with open('artists_info.pkl', 'rb') as f:
+    artists = pickle.load(f)
+f.close()
+
+with open('artists_by_genre.pkl', 'rb') as f:
+    artist_genre = pickle.load(f)
+f.close()
+
+
+#creating tree nodes for all the genres
+all_genre_nodes = {genre: TreeNode(genre, artists) for genre, artists in genres.items()}
+
+#creating the tree nodes for each artist
+all_artist_nodes = {artist: TreeNode(artist, albums) for artist, albums in artists.items()}
+
+#assigning genres the right children
+for genre in genres: #looping through the genre list
+    # print(genre)
+    for list in artist_genre: #looping through the dict that contains the artists within their respective 
+        if genre.lower() in list.lower(): #checking if the list contains the genre name
+            # artist_list = list(artist_genre[list]['artist_dict'].keys()) #get a list of the artists within the genre to loop through
+            if artist_genre[list]['artist_dict']: #checks if there artists listed in the genre
+                for key in artist_genre[list]['artist_dict'].keys(): #loops through the artists within that genre
+                    current_parent = all_genre_nodes[genre] #get the current genre node
+                    try:
+                        current_parent.add_child(all_artist_nodes[key]) #add the artist as a child to the current child node
+                    except:
+                        print('error', key)
+
+#writing the dictionary that contains all of the tree nodes on genres
+f = open('genre_node_dict.pkl', 'wb')
+pickle.dump(all_genre_nodes, f)
+f.close()
+
+#writting the dictionary that contains all the artists nodes into a pickled file
+f = open('artist_node_dict', 'wb')
+pickle.dump(all_artist_nodes,f)
+f.close()
