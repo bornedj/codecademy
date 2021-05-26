@@ -1,4 +1,7 @@
 import pickle
+import re
+from tqdm import tqdm
+
 #def the class for tree node
 class TreeNode:
   def __init__(self, name, info):
@@ -38,6 +41,24 @@ f.close()
 
 # print(artist_info)
 # print(artists_by_genre)
+
+#cleaning out the (album) from each alubm in an artists list
+# for artist in artist_info:
+#   if artist_info[artist]:#check if the artist has a list of albums
+#     #if they do use regex to replace values
+#     for i in range(len(artist_info[artist])):
+#       corrected_album = artist_info[artist][i]
+#       corrected_album = corrected_album[:corrected_album.find('(') - 1]
+#       artist_info[artist][i] = corrected_album
+
+
+#re-writting the file now that it's corrected
+# f = open('artists_info.pkl', 'wb')
+# pickle.dump(artist_info, f)
+# f.close()
+
+print(artist_info)
+
 
 # set up a function to iterate through the list of all the artists by genre 
 # and check if they have artists in them to be added as children.
