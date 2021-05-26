@@ -23,17 +23,17 @@ def main():
     while not narrow:
         narrow = input("To look at list of all genres type \"all\". If you would like to look at the genres under a specific letter type the letter: ").lower()
 
-        if narrow == 'all':
-            for choice in choice_nodes:
-                print(choice, choice_nodes[choice].info)
+        if narrow == 'all': #will print all of the genres in the list
+            for idx, choice in enumerate(choice_nodes):
+                print(idx, choice_nodes[choice].info)
         elif narrow in choice_nodes.keys():
-            print(choice_nodes[narrow].info)
+            for idx, genre in enumerate(choice_nodes[narrow].info):
+                print(idx, genre) 
+            narrow = int(input('Enter the corresponding number from the list above to find out more about the genre.'))
         else:
             print('Oops, wrong input, try again')
             narrow = None
 
-
-        
 
 main()
 
