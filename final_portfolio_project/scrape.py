@@ -172,12 +172,19 @@ def get_artist_info(url):
 #looping through the dictionary to create the artist dictionary
 artists_info = {}
 for list in tqdm(lists_of_artists):
-    for key in lists_of_artists[list]['artist_dict']:
+    for key in tqdm(lists_of_artists[list]['artist_dict']):
         if lists_of_artists[list]['artist_dict'][key]:
             url = "https://en.wikipedia.org" + lists_of_artists[list]['artist_dict'][key]
-            artists_info[key] = get_artist_info(url)
+            
+            try:
+                artists_info[key] = get_artist_info(url)
+            except:
+                artists_info[key] = "error"
 
 print(artists_info)
-# print(get_artist_info(''))
 
 #save the artists_info data
+f = open('artists_info.pkl', 'rb')
+pickle.dump(artists_info, f)
+f.close()
+
