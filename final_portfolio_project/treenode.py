@@ -1,3 +1,5 @@
+import pickle
+#def the class for tree node
 class TreeNode:
   def __init__(self, name, info):
     self.name = name # data
@@ -22,3 +24,21 @@ class TreeNode:
       current_node = nodes_to_visit.pop()
       print(current_node.value)
       nodes_to_visit += current_node.children
+
+
+#loading in the necessary objects
+with open('artists_by_genre.pkl', 'rb') as f:
+  artists_by_genre = pickle.load(f)
+f.close()
+
+#artist info
+with open('artists_info.pkl', 'rb') as f:
+  artist_info = pickle.load(f)
+f.close()
+
+# print(artist_info)
+# print(artists_by_genre)
+
+# set up a function to iterate through the list of all the artists by genre 
+# and check if they have artists in them to be added as children.
+# also create the tree nodes for the artists 
