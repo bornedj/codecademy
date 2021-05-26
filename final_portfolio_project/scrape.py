@@ -209,3 +209,29 @@ f.close()
 f = open('artist_node_dict', 'wb')
 pickle.dump(all_artist_nodes,f)
 f.close()
+
+#creating a dictionary that will be the choices node
+first_letters = set([genre[0].lower() for genre in all_genre_nodes])
+first_letters = sorted(list(first_letters))
+# print(first_letters)
+
+choices = {first_letter: [] for first_letter in first_letters}
+
+for genre in all_genre_nodes:
+    choices[genre[0].lower()].append(genre)
+
+#dict where key is the input the user will give and the value is a tree node containing a name of the same value and 
+# info is the genres it is short for
+choices_nodes = {key: TreeNode(key, value) for key, value in choices.items()}
+
+#adding children to the choices nodes
+for choice in choices_nodes:# loops through the dict keys
+    for genre_choice in choices_nodes[choice].info: #loops through the genres within the node info
+        for genre in all_genre_nodes:
+            if genre_choice.lower() == genre.lower():
+                choices_nodes[choice].add_child(all_genre_nodes[genre])
+
+#save the choices_nodes
+with open('choice_dict_nodes.pkl', 'wb') as f:
+    pickle.dump(choices_nodes, f)
+f.close()
