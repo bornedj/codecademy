@@ -23,3 +23,17 @@ class TreeNode:
       current_node = nodes_to_visit.pop()
       print(current_node.value)
       nodes_to_visit += current_node.children
+
+  def dfs(root, target, path=()):
+    path = path + (root,)
+
+    if root.name == target:
+      return path
+
+    for child in root.children:
+      path_found = dfs(child, target, path)
+
+      if path_found is not None:
+        return path_found
+
+    return None
