@@ -24,6 +24,7 @@ def main():
     while not narrow:
         narrow = input("To look at list of all genres type \"all\". If you would like to look at the genres under a specific letter type the letter: ").lower()
 
+        #narrowing down after displaying all the genres
         if narrow == 'all': #will print all of the genres in the list
             for idx, choice in enumerate(choice_nodes):
                 print(idx, choice_nodes[choice].info, '\n')
@@ -51,27 +52,27 @@ def main():
 
             
             #show the genre description
-            print("Here is the description of the genre as defined by wikipedia:\n")
+            print("\nHere is the description of the genre as defined by wikipedia:\n")
             for child in choice_nodes[selected_choice].children:
                 if child.name == selected_genre:
                     current_node = child
                     print(current_node.info['description'])
 
             #check if the user wants to see the available artists
-            narrow = input("Would you like to see some artists from this genre (if wiki lists them) type y/n: ").lower()
-            if narrow== 'y':
+            narrow = input("\n\nWould you like to see some artists from this genre (if wiki lists them) type y/n: ").lower()
+            if narrow == 'y':
 
                 #look for the artists within the current_node
                 if current_node.children:
                     for idx, child in enumerate(current_node.children):
                         print(idx, child.name)
-                    narrow = int(input("Select a band by the number to it's left based on the list above: "))
+                    narrow = int(input("\nSelect a band by the number to it's left based on the list above: "))
                     for idx, child in enumerate(current_node.children):
                         if narrow == idx:
                             current_node = current_node.children[idx]
 
                     #show the information about the artists
-                    print("Here is the artists description and records:\n")
+                    print("\nHere is the artists description and records:\n")
                     print(current_node.name)
                     if current_node.info:
                         for album in current_node.info:
@@ -79,19 +80,84 @@ def main():
                     else:
                         print('They don\'t have listed albums on wikipidea')
 
+                    narrow = input("\n\nWould you like to look for another genre? Type y if yes and anything else to quit.").lower()
+                    if narrow == 'y':
+                        main()
+                    else:#they don't exit the program
+                        sys.exit()
+
                     
+            else: #they don't want to see artists, check if they want to see another genre
+                narrow = input("\n\nWould you like to look for another genre? Type y if yes and anything else to quit.").lower()
+                if narrow == 'y':
+                    main()
+                else:#they don't exit the program
+                    sys.exit()
+            
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------
+        #selected by letter/number beforehand
+        elif narrow in choice_nodes.keys():
+            key = narrow
+            for idx, genre in enumerate(choice_nodes[narrow].info):
+                print(idx, genre) 
+
+
+            narrow = int(input('Enter the corresponding number from the list above to find out more about the genre: '))
+            for k, genre in enumerate(choice_nodes[key].info):
+                if k == narrow:
+                    selected_genre = choice_nodes[key].info[k] #saving the genre to display
+
+            #show the genre description
+            print("Here is the description of the genre as defined by wikipedia:\n")
+            for child in choice_nodes[key].children:
+                if child.name == selected_genre:
+                    current_node = child
+                    print(current_node.info['description'])
+
+            #check if the user wants to see the available artists
+            narrow = input("Would you like to see some artists from this genre (if wiki lists them) type y/n: ").lower()
+            if narrow == 'y':
+
+                #look for the artists within the current_node
+                if current_node.children:
+                    for idx, child in enumerate(current_node.children):
+                        print(idx, child.name)
+                    narrow = int(input("\nSelect a band by the number to it's left based on the list above: "))
+                    for idx, child in enumerate(current_node.children):
+                        if narrow == idx:
+                            current_node = current_node.children[idx]
+
+                    #show the information about the artists
+                    print("\nHere is the artists description and records:\n")
+                    print(current_node.name)
+                    if current_node.info:
+                        for album in current_node.info:
+                            print(album)
+                    else:
+                        print('They don\'t have listed albums on wikipidea')
+
+                    narrow = input("\n\nWould you like to look for another genre? Type y if yes and anything else to quit.").lower()
+                    if narrow == 'y':
+                        main()
+                    else:#they don't exit the program
+                        sys.exit()
+                
+                else: #wiki didn't list any bands
+                    print("\nWikipedia does not have any bands listed for this genre.")
+                    narrow = input("\n\nWould you like to look for another genre? Type y if yes and anything else to quit.").lower()
+                    if narrow == 'y':
+                        main()
+                    else:#they don't exit the program
+                        sys.exit()
+
+
             else: #they don't want to see artists, check if they want to see another genre
                 narrow = input("Would you like to look for another genre? Type y if yes and anything else to quit.").lower()
                 if narrow == 'y':
                     main()
                 else:#they don't exit the program
                     sys.exit()
-            
 
-        elif narrow in choice_nodes.keys():
-            for idx, genre in enumerate(choice_nodes[narrow].info):
-                print(idx, genre) 
-            narrow = int(input('Enter the corresponding number from the list above to find out more about the genre.'))
         else:
             print('Oops, wrong input, try again')
             narrow = None
