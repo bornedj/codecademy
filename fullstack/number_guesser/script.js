@@ -28,6 +28,9 @@ function updateScore(string){
     }
 }
 
+function advanceRound(){
+    currentRoundNumber++;
+}
 //testing some values for the written functions
 /*let target = generateTarget();
 console.log(5, 7, target)
