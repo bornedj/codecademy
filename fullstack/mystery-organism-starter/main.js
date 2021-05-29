@@ -1,5 +1,5 @@
-const { throws } = require("node:assert");
-const { count } = require("node:console");
+// const { throws } = require("node:assert");
+// const { count } = require("node:console");
 
 // Returns a random DNA base
 const returnRandBase = () => {
@@ -56,12 +56,22 @@ const pAequorFactory = (number, arr) => {//number is the number of the dna, arr 
       }else{
         return false;
       }
-     },//end likely survive
+     }//end likely survive
   }
-
 }
 
+//creating thirty pAequors
+arr_p = [];//array containing the pAequors that are likely to survive
+let specimenNum = 0;
+do{//do while will run until 30 p things are generated that are likely to survive
+  const possible = pAequorFactory(specimenNum, mockUpStrand())
+  if (possible.willLikelySurvive) {//check it's survive
+    arr_p.push(possible);//add it to the list
+    specimenNum++;//get new specimen num
+  }
+  
 
+}while (arr_p.length < 30);
 
-
-
+//looking at some functions to see them work
+arr_p[0].compareDNA(arr_p[5])
