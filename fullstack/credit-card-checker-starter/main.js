@@ -41,7 +41,6 @@ function validateCred(arr){
     }
 
     sum = copy.reduce((accum, current) => accum + current);// getting the sum of the array
-    console.log(sum% 10)
     if (sum % 10 === 0){
         return true;
     }else{
@@ -49,12 +48,52 @@ function validateCred(arr){
     }
 }
 
+//function will iterate through the list and find the cards that are invalid and return a list of them
+function findInvalidCards(arr){
+    let list = [];
+    for (card of arr){
+        if (!validateCred(card)){
+            list.push(card)
+        }
+    }
+    return list;
+}
 
-let test = [1,2,3,1]
-console.log(validateCred(valid1))
 
+//function to get the ids of the invalid cards
+function idInvalidCardCompanies(arr){
+    let companies = [];
+    for (card of arr){
+        const first = card[0];
+        switch (first){
+            case 3:
+                companies.push('Amex');
+                break;
+            case 4:
+                companies.push('Visa');
+                break;
+            case 5:
+                companies.push('Mastercard');
+                break;
+            case 6:
+                companies.push('Discover');
+                break;
+            default:
+                companies.push('Company not found');
+                break;
+        }
+    }
+    
+    return new Set(companies);
+}
 
+// let test = [1,2,3,1]
+// console.log(validateCred(valid1))
+// console.log(findInvalidCards(batch))
+const invalidCards = findInvalidCards(batch);
 
+const companies = (idInvalidCardCompanies(invalidCards));
+console.log(companies)
 
 
 
