@@ -20,8 +20,14 @@ const _ = {
         }else{
             return true;
         }
+    },
+
+    //words will split a string into words
+    words(string){
+        return string.split(' ');
     }
 
+    //
 };
 // // testing clamp
 // console.log(_.clamp(5,10,15))
