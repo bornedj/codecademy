@@ -16,7 +16,7 @@ const messageComponents = [
     [' your love life ', ' your professional life ', ' your home life '],
     [//need two lists for the different tenses
         ['will be horrible.', 'will not see major changes.', 'will become incredible.'],
-        ['has been horrible', 'has not seen major changes', 'has become incredible.']
+        ['has been horrible.', 'has not seen major changes.', 'has become incredible.']
     ]
 ]
 
@@ -34,14 +34,12 @@ const signFactory = (name, startDate, endDate, messages) => {
             // we need to know the time for the third option
             const randFirst = this.generateRand();
             const first = this.messages[0][randFirst];//random time
-            const second = this.messages[1][this.generateRand()];
+            const second = this.messages[1][this.generateRand()];//random topic
             if (randFirst === 1){
-                const third = this.messages[2][1][this.generateRand()];
+                return first + second + this.messages[2][1][this.generateRand()];//concat and return with the good/bad
             }else{
-                const third = this.messages[2][0][this.generateRand()];
+                return first + second + this.messages[2][0][this.generateRand()];//concat and return with the good/bad
             }
-            
-            return first + second + third;
         }
     }
 };
@@ -53,5 +51,5 @@ for (let i = 0; i < signNames.length; i++){
 };
 
 
-console.log(signObjs[0].generateMessage());
+// console.log(signObjs[0].generateMessage());
 module.exports = signObjs;
