@@ -1,3 +1,5 @@
+// const { validate } = require("json-schema")
+
 // All valid credit card numbers
 const valid1 = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8]
 const valid2 = [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9]
@@ -24,8 +26,32 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 // Add your functions below:
+function validateCred(arr){
+    //moving from right to left, but only going by every two. Going to reverse the array to make this easier
+    let copy = arr.reverse();
+    
+    for (let i = 0; i < copy.length; i++){
+        if (i % 2 != 0){//if we are on an even index
+            newValue = copy[i] * 2;
+            if (newValue > 9){
+                newValue -= 9;
+            }
+            copy[i] = newValue;
+        }
+    }
+
+    sum = copy.reduce((accum, current) => accum + current);// getting the sum of the array
+    console.log(sum% 10)
+    if (sum % 10 === 0){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 
+let test = [1,2,3,1]
+console.log(validateCred(valid1))
 
 
 
