@@ -14,7 +14,14 @@ const mockUpStrand = () => {
 };
 
 
+//we will need to create several of these dna strands: making factory
+const pAequorFactory = (number, arr){//number is the number of the dna, arr is an array of 15 dna bases(1 strand)
+  return {//return obj
+    specimenNum: number,
+    dna: arr
+  }
 
+}
 
 
 
