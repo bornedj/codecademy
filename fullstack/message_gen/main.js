@@ -29,3 +29,11 @@ for (let i =0; i < signs.length; i++){
         sign = signs[i];//they are a capricorn
     }
 }
+
+//begin work on displaying a message
+let another;// this will be our checker 
+do{//will let the user get multiple readings if they'd like.
+    console.log(`${userName}, you are a ${sign.name}. Your horoscope for today is: ${sign.generateMessage()}`)
+    another = prompt('\nIf you would like another reading type "y", if not type anything else to quit: ').toLowerCase();
+}while (another === 'y');
+console.log('Thank you for using my horoscope program!');
