@@ -48,6 +48,41 @@ const _ = {
         }else{
             return false;
         }
+    },
+
+    //adding invert
+    invert(obj){
+        let tempObj = {};
+        for (key in obj){
+            tempObj[obj[key]] = key;
+        }
+        return tempObj;
+    },
+
+    //adding findkey
+    findKey(obj, func){
+        for (item in obj){
+            if (func(obj[item])){
+                return item;
+            }
+        }
+        return undefined;
+    },
+
+    //adding drop, uses splice and defaults to dropping the first value
+    drop(arr, num = 1) {
+        arr.splice(0, num);
+        return arr;
+    },
+
+    dropWhile(arr, func){
+        let idx = 0;
+        let element = arr[idx];
+        while (func(element, idx, arr)){
+            arr.shift()
+            element = arr[idx]
+        }
+        return arr;
     }
 };
 // // testing clamp
