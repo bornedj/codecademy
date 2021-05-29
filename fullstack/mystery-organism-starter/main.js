@@ -42,7 +42,21 @@ const pAequorFactory = (number, arr) => {//number is the number of the dna, arr 
       }//end for
       const percentage = Math.floor((counter / this.dna.length) * 100);
       console.log(`Specimen ${this.specimenNum} and specimen ${pAequor.specimenNum} have ${percentage}% in common.`)
-    }
+    },//end compare
+    willLikelySurvive(){//returns true of false based on how much is composed of c and g
+      let count = 0;
+      for (base of this.dna){// this might be in
+        if (base === 'C' || base === 'G'){// increment count
+          count++;
+        }
+      }// end for
+      const percentage = count / this.length;
+      if (percentage >= .6){
+        return true;
+      }else{
+        return false;
+      }
+     },//end likely survive
   }
 
 }
