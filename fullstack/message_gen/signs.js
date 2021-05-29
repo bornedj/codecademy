@@ -1,7 +1,5 @@
 // this file will create the object literals that I will use to create the random messages.
 
-const { throws } = require("node:assert");
-
 //array of all the signs
 const signNames = ['Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn']
 //array of all their starting and ending dates
@@ -49,8 +47,11 @@ const signFactory = (name, startDate, endDate, messages) => {
 };
 
 //will loop through later to create the objects
-// for (sign of signNames){
-//     console.log(sign)
-// }
+let signObjs = [];//will store all of the signs objects
+for (let i = 0; i < signNames.length; i++){
+    signObjs.push(signFactory(signNames[i],signDates[i][0], signDates[i][1], messageComponents));
+};
 
-module.exports = signNames;
+
+console.log(signObjs[0].generateMessage());
+module.exports = signObjs;
