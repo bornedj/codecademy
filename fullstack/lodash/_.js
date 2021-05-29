@@ -83,6 +83,19 @@ const _ = {
             element = arr[idx]
         }
         return arr;
+    },
+
+    //adding chunk
+    chunk(arr, size = 1){
+        let newArr = [];
+        while (arr.length > 0){//going to use slice
+            if (arr.length <= size){
+                newArr.push(arr.splice(0, arr.length))
+            }else{
+                newArr.push(arr.splice(0, size))
+            }
+        }
+        return newArr;
     }
 };
 // // testing clamp
