@@ -1,0 +1,22 @@
+*{
+    font-family: Helvetica;
+}
+h1{
+    background-image: url(./images/image_1.webp);
+    font-size: 100px;
+    font-weight: bold;
+    color: khaki;
+    text-align: center;
+}
+
+h2{
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+span{
+    font-weight: bold;
+    color: blue;
+}
+
