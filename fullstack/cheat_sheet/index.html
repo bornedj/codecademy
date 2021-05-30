@@ -7,6 +7,71 @@
         <link rel="stylesheet" href="styles.css">
     </header>
     <body>
-        <h1>This is a cheat sheet for CSS and HTML concepts.</h1>
+        <h1>This is a cheat sheet for CSS selector concepts.</h1>
+        <h2>Selector components</h2>
+        <table>
+            <thead>
+                <th>Item</th>
+                <th>Example</th>
+                <th>Description</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Selector</td>
+                    <td>p</td>
+                    <td>Indicates which element the the rule applies too</td>
+                </tr>
+                <tr>
+                    <td>Declartion</td>
+                    <td>{}</td>
+                    <td>Follows the selector and contains the rules to be applied</td>
+                </tr>
+                <tr>
+                    <td>Declartion Statement</td>
+                    <td>color: red;</td>
+                    <td>The rule to be applied to to the tag</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Specificity</h2>
+        <table>
+            <thead>
+                <th>Selector</th>
+                <th>Example</th>
+                <th>Description</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tag</td>
+                    <td>p</td>
+                    <td>Lowest level of specificity. Will apply to all elements with that tag</td>
+                </tr>
+                <tr>
+                    <td>Class</td>
+                    <td>"article-heading"</td>
+                    <td>Class is defined by the website's writer. The same class can be used by many tags/elements</td>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>"last-button"</td>
+                    <td>Most specific indentifier. Ids are unique indentifiers</td>
+                </tr>
+                <tr>
+                    <td>child</td>
+                    <td>p.span</td>
+                    <td>Same level of specificity as a tag. Will apply to all elements that are the child of the tag</td>
+                </tr>
+                <tr>
+                    <td>Descendant selector</td>
+                    <td>body h1</td>
+                    <td>Will format all tags within a specified tag, doesn't neccessarily need to be the child</td>
+                </tr>
+                <tr>
+                    <td>State selector</td>
+                    <td>a:hover</td>
+                    <td>Changes the style based on user input/interaction</td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>
