@@ -20,3 +20,20 @@ span{
     color: blue;
 }
 
+/* working on the specific headers */
+#brushes{
+    background-color: mediumspringgreen;
+}
+
+#frames{
+    background-color: lightcoral;
+}
+
+#paint{
+    background-color: skyblue;
+}
+
+figure{
+    text-align: left;
+    margin: 0%;
+}
