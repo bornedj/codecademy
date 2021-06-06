@@ -1,4 +1,6 @@
 html{
     background-color: black;
-    align-self: center;
+    text-align: center;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
