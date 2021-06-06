@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Abril Fatface';
+    src: url('Abril_Fatface/AbrilFatface-Regular.ttf') format('truetype');
+    font-family: 'Merriweather';
+    src: url('./Merriweather/Merriweather-Black.ttf') format('truetype');
+    font-family: 'Work Sans';
+    src: url('./Work_Sans/static/') format('truetype');
+}
+
 html {
     font-size: 18px;
   }
