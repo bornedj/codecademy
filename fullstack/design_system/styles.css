@@ -12,6 +12,7 @@ body{
     border: 3px solid white;
 }
 
+/* Colors portion of the website */
 .color-box{
     width: 100px;
     height: 100px;
@@ -46,3 +47,23 @@ body{
 #secondary-triad{
     background-color: #420803;
 }
+
+
+/* Fonts section */
+
+.font-box {
+    display: inline-block;
+}
+
+#times li{
+    font-family: 'Times New Roman';
+}
+
+#georgia li {
+    font-family: Georgia;
+}
+
+#helvetica li {
+    font-family: Helvetica;
+}
+
