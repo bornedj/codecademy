@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: lightslategray;
+}
+
+.theme-section {
+    border: 2px solid whitesmoke;
+}
+
+.color {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
