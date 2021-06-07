@@ -1,7 +1,48 @@
 * {
     box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
 }
 
 body{
     background-color: lightslategray;
+}
+
+.section-box {
+    border: 3px solid white;
+}
+
+.color-box{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    background-color: #0e0342;
+    color: white;
+    text-align: center;
+    margin: auto;
+    position: relative;
+}
+
+.color-box p{
+    padding: 25px 0;
+}
+
+#primary-analogous{
+    background-color: #2d0342;
+}
+
+#secondary-analogous{
+    background-color: #032c42;
+}
+
+#primary-mono{
+    background-color: #22175c;
+}
+
+#primary-triad{
+    background-color: #384203;
+}
+
+#secondary-triad{
+    background-color: #420803;
 }
