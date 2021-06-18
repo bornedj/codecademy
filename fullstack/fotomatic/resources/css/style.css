@@ -48,7 +48,7 @@ header {
   max-height: 85px;
   min-height: 48px;
   z-index: 100;
-
+  top: 0;
 }
 
 header .content {
