@@ -32,6 +32,10 @@ html {
   .main-content {
     top: 2.5625rem;
   }
+
+  .mobile {
+    display: none;
+  }
 }
 
 /* Header */
