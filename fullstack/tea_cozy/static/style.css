@@ -8,7 +8,7 @@ html {
 }
 
 /* working on the header */
-header {
+.header {
     position: fixed;
     height: 69px;
     border-bottom: 1px solid seashell;
@@ -17,5 +17,41 @@ header {
     align-items: center;
     top: 0;
     margin: 0;
+    justify-content: space-between;
+
 }
 
+#company-logo {
+    max-height: 50px;
+    position: relative;
+    float: left;
+    margin-left: 10px;
+    
+}
+
+#header-links {
+    float: right;
+}
+
+.header a {
+    color: seashell;
+    text-decoration: underline;
+}
+
+/* working on the mission section */
+#mission {
+    margin-top: 69px;
+    background-image: url('./img-mission-background.jpg');
+    display: flex;
+    min-height: 700px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#mission-text {
+    background-color: black;
+    width: 100%;
+}
+
+/* testing a new addition */
