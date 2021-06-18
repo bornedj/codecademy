@@ -53,3 +53,37 @@ a {
 }
 
 /* beginning work on the desktop version of the site */
+@media only screen and (min-width: 992px) {
+/* fixing the header and hiding unneccessary content */
+  header{
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    display: inline-block;
+    flex-direction: row;
+    flex-wrap: flex-start;
+    justify-content: space-between;
+
+  }
+
+  .content a {
+    float: left;
+  }
+
+  .desktop {
+    float: right;
+  }
+  .mobile {
+    display: none;
+  }
+}
+
+/* Tablet view */
+@media screen and (min-width: 768px) {
+  
+}
+
+/* mobile view */
+@media only screen and (min-width: 480px) {
+  
+}
