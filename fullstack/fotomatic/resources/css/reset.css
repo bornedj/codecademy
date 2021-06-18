@@ -60,11 +60,11 @@ a {
     background-color: white;
     color: #4a4a4a;
     width: 100%;
-    display: flexbox;
+    display: flex;
     flex-direction: row;
     min-height: 85px;
     align-items: center;
-    
+    justify-content: space-between;
     
   }
 
@@ -74,16 +74,13 @@ a {
     align-items: center;
   }
 
-  /* move the other content to left of the header */
-  .desktop {
-    float: right;
-  }
-
   /* working on wrapping the stuff on the right */
   .content ul{
-    display: flex;
+    display: inline-block;
     justify-content: space-between;
     flex-flow: row wrap;
+    margin-left: auto;
+    order: 2;
   }
 
   .icon {
