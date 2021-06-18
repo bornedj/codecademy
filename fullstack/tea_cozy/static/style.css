@@ -42,12 +42,13 @@ html {
 #mission {
     margin-top: 69px;
     background-image: url('./img-mission-background.jpg');
-    display: flex;
+    display: inline-flex;
     min-height: 700px;
-    width: 100%;
+    max-width: 100%;
     justify-content: center;
     align-items: center;
     background-size: cover;
+    height: auto;
 }
 
 #mission-text {
