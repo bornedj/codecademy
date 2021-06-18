@@ -57,32 +57,22 @@ a {
 /* fixing the header and hiding unneccessary content */
   header{
     position: fixed;
+    width: 100%;
+    height: 85px;
     background-color: white;
     color: #4a4a4a;
-    width: 100%;
+    align-items: center;
     display: flex;
-    flex-direction: row;
-    min-height: 85px;
-    align-items: center;
-    justify-content: space-between;
-    
   }
 
-  /* adjusts the fotomat to left */
-  .content a {
-    float: left;
-    align-items: center;
-  }
-
-  /* working on wrapping the stuff on the right */
-  .content ul{
-    display: inline-block;
-    justify-content: space-between;
+  .desktop ul{
+    position: absolute;
+    right: 0px;
+    top: 25%;
     flex-flow: row wrap;
-    margin-left: auto;
-    order: 2;
+    justify-content: space-between;
   }
-
+  
   .icon {
     max-height: 1em;
   }
