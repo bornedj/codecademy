@@ -58,20 +58,36 @@ a {
   header{
     position: fixed;
     background-color: white;
+    color: #4a4a4a;
     width: 100%;
-    display: inline-block;
+    display: flexbox;
     flex-direction: row;
-    flex-wrap: flex-start;
-    justify-content: space-between;
-
+    min-height: 85px;
+    align-items: center;
+    
+    
   }
 
+  /* adjusts the fotomat to left */
   .content a {
     float: left;
+    align-items: center;
   }
 
+  /* move the other content to left of the header */
   .desktop {
     float: right;
+  }
+
+  /* working on wrapping the stuff on the right */
+  .content ul{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+  }
+
+  .icon {
+    max-height: 1em;
   }
   .mobile {
     display: none;
