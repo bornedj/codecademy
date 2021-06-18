@@ -1,0 +1,22 @@
+html {
+    font-family: Helvetica, sans-serif;
+    font-size: 22px;
+    color: seashell;
+    background-color: black;
+    opacity: .9;
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    position: fixed;
+    background-color: black ;
+    width: 100%;
+    height: 69px;
+    border-bottom: 1px solid seashell;
+}
+
+header a{
+    text-decoration: underline;
+}
