@@ -164,11 +164,21 @@ header .mobile {
 
 #sign-up-cta .cursive {
   font-family: "Damion", cursive;
+  top: 32px;
+  bottom: 0px;
 }
 
 #sign-up-cta .striking {
   font-family: "Rubik", sans-serif;
   padding-bottom: .75rem;
+  font-size: 3.125rem;
+  line-height: 1.4;
+  top: 0;
+  margin-bottom: 0;
+}
+
+#sign-up-cta .email {
+  margin-top: 0;
 }
 
 #sign-up-cta .button {
