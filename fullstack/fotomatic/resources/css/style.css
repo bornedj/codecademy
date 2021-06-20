@@ -315,12 +315,15 @@ header .mobile {
 #filters-section .content {
   padding: 0 .625rem;
   margin-bottom: 5rem;
+  margin-top: 4rem;
 }
 
 #filters-section .content h2 {
   font-size: 2.25rem;
   font-weight: bold;
   color: white;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 #filters-section .content h3 {
@@ -328,11 +331,19 @@ header .mobile {
   line-height: 1.4;
   font-weight: 300;
   color: white;
+  margin-top: auto;
 }
 
 #filters-section .images-container {
   max-width: 100%;
   padding: 0 1%;
+  display: flex;
+}
+
+#filters-section img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 @media only screen and (max-width: 760px) {
