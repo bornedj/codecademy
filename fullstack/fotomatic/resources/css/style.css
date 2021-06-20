@@ -250,9 +250,15 @@ header .mobile {
 }
 
 .feature .image-container {
-  width: 90%;
-  height: 65%;
+  max-width: 90%;
+  max-height: 65%;
   margin: 2rem;
+}
+
+.feature img{
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .feature h2 {
