@@ -191,3 +191,17 @@ header a {
     justify-self: center;
 }
 
+.section-divider {
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    background-color: black;
+    margin-top: 2rem;
+    
+}
+
+.section-divider h2 {
+    font-size: 3rem;
+    color: white;
+}
