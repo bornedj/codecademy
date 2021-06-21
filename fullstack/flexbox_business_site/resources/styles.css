@@ -110,3 +110,25 @@ header a {
     max-height: 400px;
     max-width: 400px;
 }
+
+.grid {
+    display: flex;
+    position: relative;
+    margin: auto 1rem;
+    padding-top: 1rem;
+}
+
+.grid figure{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+.grid figure figcaption {
+    display: inline;
+}
+
+.grid figure img {
+    display: inline;
+}
