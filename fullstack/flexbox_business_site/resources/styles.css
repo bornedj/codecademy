@@ -97,3 +97,16 @@ header a {
     display: block;
 }
 
+/* products */
+#products {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+
+#products img {
+    height: auto;
+    width: auto;
+    max-height: 400px;
+    max-width: 400px;
+}
