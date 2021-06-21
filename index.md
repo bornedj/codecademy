@@ -2,4 +2,4 @@
 
 contains projects for fullstack and datascience portfolio.
 
-[abibas](./fullstack/flexbox_business_site/index.html)
+[abibas](./flexbox_business_site/index.html)
