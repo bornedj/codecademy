@@ -60,7 +60,14 @@ header a {
     }
 }
 
-/* products */
+/* mission */
+.grid {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(12, 1fr);
+    justify-content: center;
+    align-items: center;
+}
+
 #mission-grid {
     margin-top: 100px;
     display: flex;
@@ -84,12 +91,6 @@ header a {
     flex-flow: row wrap;
     align-items: center;
 }
-.grid {
-    display: grid;
-    grid-template: repeat(4, 1fr) / repeat(12, 1fr);
-    justify-content: center;
-    align-items: center;
-}
 
 #mission-grid h1 {
     position: relative;
@@ -104,3 +105,5 @@ header a {
     display: block;
     opacity: 1;
 }
+
+/* products */
