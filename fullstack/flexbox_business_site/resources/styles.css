@@ -59,3 +59,23 @@ header a {
         justify-content: center;
     }
 }
+
+/* products */
+#mission-grid {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-items: center;
+}
+.grid {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(12, 1fr);
+    justify-content: center;
+    align-items: center;
+}
+
+#mission-grid h1 {
+   font-size: 100px;
+   display: inline;
+}
