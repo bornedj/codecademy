@@ -29,4 +29,11 @@ header img {
 header ul {
     position: absolute;  
     right: 0;
+    list-style-type: none;
+    flex-flow: row wrap;
+}
+
+header a {
+    color: white;
+    display: inline;
 }
