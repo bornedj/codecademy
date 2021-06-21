@@ -67,6 +67,22 @@ header a {
     justify-content: center;
     flex-flow: row wrap;
     align-items: center;
+    background-image: url('./roller-derby.jpg');
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    min-height: 700px;
+}
+
+#mission-content {
+    background-color: black;
+    opacity: .6;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-items: center;
 }
 .grid {
     display: grid;
@@ -76,6 +92,15 @@ header a {
 }
 
 #mission-grid h1 {
-   font-size: 100px;
-   display: inline;
+    position: relative;
+    font-size: 6em;
+    display: block;
+    opacity: 1;
+}
+
+#mission-grid h3 {
+    position: relative;
+    font-size: 3em;
+    display: block;
+    opacity: 1;
 }
