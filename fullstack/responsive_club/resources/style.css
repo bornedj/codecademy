@@ -8,6 +8,11 @@ html * {
 body {
     background-color: #242582;
     color: white;
+    width: auto;
+}
+/* will remove later just removing the scroll bar on the website for now */
+img {
+    overflow: hidden;
 }
 
 /* header */
@@ -86,4 +91,19 @@ header a {
     width: 75%;
     padding: 0;
     margin: 0 auto;
+}
+
+/* events tablet */
+@media only screen and (max-width: 760px){
+    #events {
+        justify-content: center;
+        margin: 0 auto;
+        padding: 0;
+
+    }
+    #lessons {
+        /* margin: 1rem auto; */
+        justify-self: center;
+        padding: 0;
+    }
 }
