@@ -61,16 +61,21 @@ header a {
     margin-left: 1rem;
     margin-right: 1rem;
     width: 100%;
+    flex-flow: row wrap;
+    display: flex;
 }
 
 #about-us h1 {
     font-size: 4rem;   
     text-decoration: underline;
+    display: block;
+    width: 100%;
 }
 
 #about-us p {
     width: 75%;
     font-weight: 200;
+    display: block;
 }
 
 /* events */
