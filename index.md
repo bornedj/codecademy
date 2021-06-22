@@ -1,5 +1,3 @@
 # Daniel's github pages
 
-contains projects for fullstack and datascience portfolio.
-
-[abibas](./flexbox_business_site/index.html)
+This pages will contain a few of the many projects I completed during codecademy's fullstack and cs courses.
