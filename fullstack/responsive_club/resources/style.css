@@ -38,7 +38,7 @@ header {
     z-index: 2;
 }
 
-header ul {
+.page-links {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,10 +46,11 @@ header ul {
     text-decoration: underline;
 }
 
-header li {
+.page-links li {
     padding: 1rem;
 }
-header a { 
+
+.page-links a { 
     color: white;
 }
 
@@ -154,17 +155,46 @@ header a {
         margin-top: auto;
     }
 
-    #testimonial img {
-
-    }
 }
 
 
 /* sign-up */
 #sign-up {
     position: relative;
+    width: 100%;
+    display: flex;    
+    justify-content: center;
+    margin: 1em auto;
+    text-align: center;
 }
+
 #sign-up img {
-    height: 100px;
-    width: 100px;
+    width: 50%;
+    object-fit: cover;
+    height: 30em;
+    width: 30em;
+    margin: 1rem;
+}
+
+#sign-up h3 {
+    text-align: center;
+    margin: 1rem auto;
+    margin-bottom: 2rem;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    background-color: #553d67;
+    height: 2rem;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+footer h3 {
+    align-self: center;
+
 }
