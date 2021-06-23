@@ -72,6 +72,7 @@ class Movie extends Media {
 
 }
 
+// checking the book class
 const historyOfEverything = new Book('A short history of nearly everything', 'Bill Byrson', 544);
 historyOfEverything.toggleCheckOutStatus;
 console.log(historyOfEverything.isCheckedOut);
@@ -79,3 +80,12 @@ historyOfEverything.addRating(4);
 historyOfEverything.addRating(5);
 historyOfEverything.addRating(5);
 console.log(historyOfEverything.getAverageRating());
+
+//checking the movie class
+const speed = new Movie('Speed', 'Jan de Bont', 116);
+speed.toggleCheckOutStatus;
+console.log(speed.isCheckedOut);
+speed.addRating(1);
+speed.addRating(1);
+speed.addRating(5);
+console.log(speed.getAverageRating());
