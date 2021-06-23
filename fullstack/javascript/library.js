@@ -27,9 +27,7 @@ class Media {
 
     //returns the average of the ratings array using reduce
     getAverageRating() {
-        return (this._ratings.reduce((accum, currentValue) => {
-            accum + currentValue;
-        }, 0) / this._ratings.length);
+        return this._ratings.reduce((accum, currentValue) => accum + currentValue, 0) / this._ratings.length;
     }
 
     addRating(rating) {
