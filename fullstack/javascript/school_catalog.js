@@ -18,14 +18,19 @@ class School {
     }
 
     set numberOfStudents(students) {
-        this._numberOfStudents = students;
+        if (typeof(students) === 'number') {
+            this._numberOfStudents = students;
+        } else {
+            console.log('Invalid: please input a number');
+        }
     }
 
     quickFacts() {
-        return null;
+        console.log(`${this._name} educates ${this._numberOfStudents} at the ${this._level} level.`);
     }
 
-    static pickSubstituteTeacher() {
-        return null;
+    static pickSubstituteTeacher(substituteTeacher) {
+        const index = Math.floor(Math.random() * substituteTeacher.length);
+        return substituteTeacher[index];
     }
 }
