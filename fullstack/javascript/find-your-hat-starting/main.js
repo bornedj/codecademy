@@ -16,13 +16,14 @@ class Field {
         return this._field;
     }
 
+    //function to print out the field in a readable fashion
     print() {
         for (let row of this._field){
             console.log(row.join(''));
         }
     }
 
-    static generateField(rows, cols) {
+    static generateField(rows, cols) {//function to generate a random field
         let hatLocaiton;
         do {
             hatLocaiton = [Math.floor(Math.random() * rows), Math.floor(Math.random() * cols)];
@@ -47,8 +48,23 @@ class Field {
         }
         return newField; 
     }
+
+    //function to check the if the location the user is on
+    checkState() {
+        //0 is lost, 1 is won and 2 is in progress game
+        if (this.verticalLocation < 0 || this.horizontalLocation < 0) {
+            return 0;
+        } else if (this.horizontalLocation > this._field[this.verticalLocation].length || this.verticalLocation > this._field.length) {
+            return 0;
+        } else if (this._field[this.verticalLocation][this.horizontalLocation] === hat){
+            return 1;
+        } else {
+           return 2; 
+        }
+    }
 }
 
 
 const test = new Field(Field.generateField(3,3));
 test.print();
+console.log(test.checkState());
