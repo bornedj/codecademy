@@ -44,16 +44,20 @@ class Field {
         }
     }
 
-    move(direction) {
+    move() {
         // 0: right, 1: left, 2: up, 3: down
-        if (direction === 0) {
+        let input = Number(prompt('Type 0 to move right, 1 to move left, 2 to move up, and 3 to move down'));
+        while (![0,1,2,3].includes(input, 0)){
+            input = Number(prompt('Please input the right number. Type 0 to move right, 1 to move left, 2 to move up, and 3 to move down'));
+        }
+        if (input === 0) {
             this._horizontalLocation++;
-        } else if (direction === 1) {
+        } else if (input === 1) {
             this._horizontalLocation--;
-        } else if (direction === 2) {
-            this._verticalLocation++;
-        } else if (direction === 3) {
+        } else if (input === 2) {
             this._verticalLocation--;
+        } else if (input === 3) {
+            this._verticalLocation++;
         }
 
         if (this.checkState() === 2) {
@@ -76,4 +80,4 @@ const testField = new Field([['*', '░', 'O'],
 //testing print
 testField.print();
 console.log(testField.checkState());
-console.log(testField.move(0));
+console.log(testField.move());
