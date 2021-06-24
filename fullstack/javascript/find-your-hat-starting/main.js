@@ -56,15 +56,53 @@ class Field {
             return 0;
         } else if (this.horizontalLocation > this._field[this.verticalLocation].length || this.verticalLocation > this._field.length) {
             return 0;
+        } else if (this._field[this.verticalLocation][this.horizontalLocation] === hole) {
+            return 0;
         } else if (this._field[this.verticalLocation][this.horizontalLocation] === hat){
             return 1;
         } else {
            return 2; 
         }
     }
+
+    //takes user input and moves on the board
+    move() {
+        let input;
+        do {
+            input = Number(prompt('Type 0 to move right, 1 to move left, 2 to move up, and 3 to move down'))
+        } while (![0,1,2,3].includes(input, 0));//checks to see if the number is in 0,1,2,3 if it is continue the function
+
+        if (input === 0){//move right
+            this.horizontalLocation++;
+        } else if (input === 1) {
+            this.horizontalLocation--;
+        } else if (input === 2) {
+            this.verticalLocation--;
+        } else {
+            this.verticalLocation++;
+        }
+
+        //check the game state and return the value
+        const state = this.checkState();
+        if (state === 2) {//if the game is still in play
+            this._field[this.verticalLocation][this.horizontalLocation] = pathCharacter;//add to the path
+            this.print();
+        } else if (state === 0) {
+            console.log('You lost')
+        } else {
+            console.log('You won')
+        }
+        
+    }
 }
 
 
-const test = new Field(Field.generateField(3,3));
+// const test = new Field(Field.generateField(3,3));
+const test = new Field([
+  ['*', '░', 'O'],
+  ['░', 'O', '░'],
+  ['░', '^', '░']
+]);
 test.print();
-console.log(test.checkState());
+test.move();
+test.move();
