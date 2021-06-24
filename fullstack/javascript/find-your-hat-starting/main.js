@@ -96,13 +96,36 @@ class Field {
     }
 }
 
+//making a recursive function to run a game
+const game = field => {
+    let state = field.checkState();
+    if (state === 0 || state === 1) {
+        return prompt("If you would like to play again type y. If not type anything else").toLowerCase();
+    } else {
+        field.move();
+        game(field);
+    }
+}
 
+//creating loop that will allow players to play multiple games
+console.log("Welcome to find my hat");
+let gameFlag;// will be boolean that tells the game to play another or not
+do {
+    const rows = prompt('Please enter the number of rows the field should be: ');
+    const cols = prompt('Please enter the number of columns the field should be: ');
+    const field = new Field(Field.generateField(rows, cols));
+    field.print();
+
+    //game is setup time to run it
+    game(field) === 'y' ? gameFlag = true : gameFlag = false;
+} while (gameFlag);
+
+console.log("Thanks for playing");
 // const test = new Field(Field.generateField(3,3));
-const test = new Field([
-  ['*', '░', 'O'],
-  ['░', 'O', '░'],
-  ['░', '^', '░']
-]);
-test.print();
-test.move();
-test.move();
+// const test = new Field([
+//   ['*', '░', 'O'],
+//   ['░', 'O', '░'],
+//   ['░', '^', '░']
+// ]);
+// test.print();
+// game(test);
