@@ -6,6 +6,7 @@
   "author": "Codecademy",
   "license": "ISC",
   "dependencies": {
+    "mocha": "^9.0.1",
     "prompt-sync": "^4.1.7"
   }
 }
